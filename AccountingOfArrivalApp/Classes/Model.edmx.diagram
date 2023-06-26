@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="0cc99b06a2234fcaafd55d48b94447fb" Name="Diagram1">
+        <EntityTypeShape EntityType="AccountingOfArrivalModel.CompositionsOfInvoice" Width="1.5" PointX="7.5" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingOfArrivalModel.Counterparties" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingOfArrivalModel.InvoicesOnArrival" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingOfArrivalModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingOfArrivalModel.TypesOfUsers" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AccountingOfArrivalModel.Users" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="AccountingOfArrivalModel.FK__Compositi__idInv__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingOfArrivalModel.FK__InvoicesO__idCou__2A4B4B5E" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingOfArrivalModel.FK__InvoicesO__idUse__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="AccountingOfArrivalModel.FK__Users__idUserTyp__276EDEB3" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,48 @@
+﻿<Page x:Class="AccountingOfArrivalApp.Pages.PageLobby"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1080"
+      Title="PageLobby">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="125"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <StackPanel Background="#7A8187"/>
+        <StackPanel VerticalAlignment="Center" Margin="15,0,0,0">
+            <TextBlock Text="{Binding Login, StringFormat=Логин:  {0}}" Style="{StaticResource tblStyle2}"/>
+            <Separator Opacity="0" Height="15"/>
+            <TextBlock Text="{Binding TypeUser, StringFormat=Тип пользователя:  {0}}" Style="{StaticResource tblStyle2}"/>
+        </StackPanel>
+        <Border Style="{StaticResource styleBorder2}" MouseDown="BrdPersonalAccount_MouseDown">
+            <Border.Background>
+                <ImageBrush ImageSource="{Binding Photo, TargetNullValue={StaticResource UnknownUser}}" Stretch="UniformToFill"/>
+            </Border.Background>
+            <Border.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Открыть личный кабинет" Click="MenuPersonalAccount_MouseDown" Icon="{DynamicResource icoPersonalAccount}"/>
+                    <Separator Margin="0,3"/>
+                    <MenuItem Header="Выйти" Click="MenuSignOut_Click" Icon="{DynamicResource icoSignOut}"/>
+                </ContextMenu>
+            </Border.ContextMenu>
+        </Border>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="1">
+            <StackPanel>
+                <Button Style="{StaticResource btnStyle2}" Content="Номенклатура" Click="BtnNomenclature_Click"/>
+                <Button Style="{StaticResource btnStyle2}" Content="Склады" Click="BtnWarehouses_Click"/>
+                <Button Style="{StaticResource btnStyle2}" Content="Контрагенты" Click="BtnCounterparties_Click"/>
+                <Button Style="{StaticResource btnStyle2}" Content="Управление пользователями" Click="BtnUserManagement_Click" Name="btnUserManagement" Visibility="Hidden"/>
+            </StackPanel>
+            <StackPanel>
+                <Button Style="{StaticResource btnStyle2}" Content="Хранимые материалы" Click="BtnStorage_Click"/>
+                <Button Style="{StaticResource btnStyle2}" Content="Поступления" Click="BtnArrivals_Click"/>
+                <Button Style="{StaticResource btnStyle2}" Content="Распределение поступлений" Click="BtnDistribution_Click" Name="btnDistribution" Visibility="Hidden"/>
+                <Button Style="{StaticResource btnStyle2}" Content="Движения поступлений" Click="BtnMovement_Click" Name="btnMovement" Visibility="Hidden"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

@@ -1,0 +1,30 @@
+﻿<Page x:Class="AccountingOfArrivalApp.Pages.Add_Edit.AddEditPageWarehouse"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1080"
+      Title="AddEditPageWarehouse">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Добавление склада" Name="txtTitle" Style="{StaticResource tblStyle}"/>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="Название склада:" Style="{StaticResource tblStyle2}"/>
+            <TextBox Name="txbName" Text="{Binding Name}" Style="{StaticResource txbStyle}" Width="700"/>
+            <Separator Opacity="0" Height="50"/>
+            <TextBlock Text="Адрес:" Style="{StaticResource tblStyle2}"/>
+            <TextBox Name="txbAddress" Text="{Binding Address}" Style="{StaticResource txbStyle}" Width="700"/>
+            <Separator Opacity="0" Height="150"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2">
+            <Button Content="Добавить" Name="btnAddEdit" Style="{StaticResource btnStyle}" Click="BtnAddOrEdit_Click" IsDefault="true"/>
+            <Button Content="Отмена" Style="{StaticResource btnStyle}" Click="BtnCancel_Click" IsCancel="true"/>
+        </StackPanel>
+    </Grid>
+</Page>

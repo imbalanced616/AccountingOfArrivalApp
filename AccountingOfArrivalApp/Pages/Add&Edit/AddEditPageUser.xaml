@@ -1,0 +1,87 @@
+﻿<Page x:Class="AccountingOfArrivalApp.Pages.Add_Edit.AddEditPageUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1080"
+      Title="AddEditPageUser">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Добавление пользователя" Name="txtTitle" Style="{StaticResource tblStyle}"/>
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="20">
+            <StackPanel Orientation="Horizontal">
+                <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" Margin="0,15,25,0">
+                    <TextBlock Text="Фото" Style="{StaticResource tblStyle2}" TextAlignment="Center" Margin="0,0,0,10"/>
+                    <Border Style="{StaticResource styleBorder}" MouseDown="ImageLoad_MouseDown">
+                        <Image Name="imageUser" Source="{Binding Photo, TargetNullValue={StaticResource UnknownUser}}" Stretch="UniformToFill"/>
+                        <Border.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="Загрузить" Click="ImageLoad_Click" Icon="{DynamicResource icoLoad}"/>
+                                <Separator Margin="0,3"/>
+                                <MenuItem Header="Очистить" Click="ImageClear_Click" Icon="{DynamicResource icoClear}"/>
+                            </ContextMenu>
+                        </Border.ContextMenu>
+                    </Border>
+                    <Separator Opacity="0" Height="3"/>
+                    <Button Content="✕" Name="btnImageClear" Visibility="Hidden" Style="{StaticResource btnStyle3}" Width="40" Height="40" Click="ImageClear_Click" Margin="0,-475,-210,0"/>
+                </StackPanel>
+                <Separator Opacity="0" Width="35"/>
+                <StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Фамилия:" Style="{StaticResource tblStyle2}"/>
+                        <TextBox Text="{Binding Surname}" Style="{StaticResource txbStyle}"/>
+                    </StackPanel>
+                    <Separator Opacity="0" Height="20"/>
+                    <StackPanel>
+                        <TextBlock Text="Имя:" Style="{StaticResource tblStyle2}"/>
+                        <TextBox Text="{Binding Name}" Style="{StaticResource txbStyle}"/>
+                    </StackPanel>
+                    <Separator Opacity="0" Height="20"/>
+                    <StackPanel>
+                        <TextBlock Text="Отчество:" Style="{StaticResource tblStyle2}"/>
+                        <TextBox Text="{Binding Patronymic}" Style="{StaticResource txbStyle}"/>
+                    </StackPanel>
+                    <Separator Opacity="0" Height="20"/>
+                    <StackPanel>
+                        <TextBlock Text="Дата рождения:" Style="{StaticResource tblStyle2}"/>
+                        <DatePicker SelectedDate="{Binding DateOfBirthday, StringFormat='{}{0:dd.MM.yyyy}'}" Style="{StaticResource dtpkStyle}" CalendarStyle="{StaticResource resizedCalendarItem}"/>
+                    </StackPanel>
+                </StackPanel>
+                <Separator Opacity="0" Width="55"/>
+                <StackPanel>
+                    <StackPanel>
+                        <TextBlock Text="Логин:" Style="{StaticResource tblStyle2}"/>
+                        <TextBox Text="{Binding Login}" Style="{StaticResource txbStyle}"/>
+                    </StackPanel>
+                    <Separator Opacity="0" Height="20"/>
+                    <StackPanel>
+                        <TextBlock Text="Пароль:" Style="{StaticResource tblStyle2}"/>
+                        <TextBox Text="{Binding Password}" Style="{StaticResource txbStyle}"/>
+                    </StackPanel>
+                    <Separator Opacity="0" Height="20"/>
+                    <StackPanel>
+                        <TextBlock Text="Тип пользователя:" Style="{StaticResource tblStyle2}"/>
+                        <ComboBox Name="cmbTypes" SelectedValue="{Binding idUserTypes}" SelectedValuePath="idUserTypes" DisplayMemberPath="NameType" Style="{StaticResource cmbStyle}" Width="300"/>
+                    </StackPanel>
+                    <Separator Opacity="0" Height="20"/>
+                    <StackPanel>
+                        <TextBlock>
+                        <Run Text="Возраст:&#x0a;" FontSize="25"/><Run Text="{Binding Age, Mode=OneWay}" FontSize="25"/>
+                        <Run Text="{Binding AgeType, Mode=OneWay}" FontSize="25"/>
+                        </TextBlock>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="2">
+            <Button Content="Добавить" Name="btnAddEdit" Style="{StaticResource btnStyle}" Click="BtnAddOrEdit_Click" IsDefault="true"/>
+            <Button Content="Отмена" Style="{StaticResource btnStyle}" Click="BtnCancel_Click" IsCancel="true"/>
+        </StackPanel>
+    </Grid>
+</Page>

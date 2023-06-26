@@ -1,0 +1,43 @@
+﻿<Page x:Class="AccountingOfArrivalApp.Pages.LoginPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1080"
+      Title="LoginPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="3" Background="#7A8187"/>
+        <TextBlock Text="Авторизация" Style="{StaticResource tblStyle}"/>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <TextBox Name="txbLogin" Style="{StaticResource txbStyle}"/>
+                <TextBlock Text="Введите логин..." Margin="-295,0,0,0" FontSize="20" Foreground="DimGray" FontWeight="Medium" PreviewMouseDown="TxbLogin_PreviewMouseDown">
+                    <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                            <Style.Triggers>
+                                <DataTrigger Binding="{Binding Text.IsEmpty, ElementName=txbLogin}" Value="False">
+                                    <Setter Property="Visibility" Value="Hidden"/>
+                                </DataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </TextBlock.Style>
+                </TextBlock>
+            </StackPanel>
+            <Separator Opacity="0" Height="15"/>
+            <StackPanel Orientation="Horizontal">
+                <PasswordBox Name="pbPassword" Style="{StaticResource psbStyle}" PasswordChanged="PbPassword_PasswordChanged"/>
+                <TextBlock Name="txbPass" Text="Введите пароль..." Margin="-295,0,0,0" FontSize="20" Foreground="DimGray" FontWeight="Medium" PreviewMouseDown="PbPassword_PreviewMouseDown"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Content="Войти" Style="{StaticResource btnStyle}" Grid.Row="2" Click="BtnSignIn_Click" VerticalAlignment="Top" IsDefault="true"/>
+        <Button Content="Зарегистрироваться" Style="{StaticResource btnStyle}" Grid.Row="3" Click="BtnSignUp_Click" IsCancel="true"/>
+    </Grid>
+</Page>

@@ -1,0 +1,57 @@
+﻿<Page x:Class="AccountingOfArrivalApp.Pages.PageCounterparties"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1080"
+      Title="PageCounterparties">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Контрагенты" Style="{StaticResource tblStyle}"/>
+        <StackPanel Grid.Row="1" Margin="15,10" Orientation="Horizontal">
+            <TextBox Name="txbSearch" TextChanged="TxbSearch_TextChanged" Style="{StaticResource txbStyle}"/>
+            <TextBlock PreviewMouseDown="TxbSearch_PreviewMouseDown" Style="{StaticResource tblSearchStyle}"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Margin="15,10" Orientation="Horizontal" HorizontalAlignment="Right">
+            <TextBlock Text="Количество записей: " Style="{StaticResource tblStyle2}"/>
+            <TextBlock Name="CountItems" Text="0" Style="{StaticResource tblStyle2}"/>
+        </StackPanel>
+        <DataGrid Name="dtgCounterparties">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Добавить" Click="MenuAddOrEdit_Click" Icon="{DynamicResource icoAdd}"/>
+                    <MenuItem Header="Изменить" Click="MenuAddOrEdit_Click" Icon="{DynamicResource icoEdit}"/>
+                    <MenuItem Header="Обновить" Click="MenuUpdate_Click" Icon="{DynamicResource icoUpdate}"/>
+                    <Separator Margin="0,3"/>
+                    <MenuItem Header="Фильтр по правовой форме" Icon="{DynamicResource icoFilter}">
+                        <MenuItem Header="ООО" Click="MenuFilter_Click"/>
+                        <MenuItem Header="АО" Click="MenuFilter_Click"/>
+                        <MenuItem Header="ПАО" Click="MenuFilter_Click"/>
+                        <MenuItem Header="ЗАО" Click="MenuFilter_Click"/>
+                        <MenuItem Header="НКО" Click="MenuFilter_Click"/>
+                        <MenuItem Header="ИП" Click="MenuFilter_Click"/>
+                        <MenuItem Header="ОП" Click="MenuFilter_Click"/>
+                        <Separator Margin="0,3"/>
+                        <MenuItem Header="Сброс" Click="MenuUpdate_Click"/>
+                    </MenuItem>
+                    <Separator Margin="0,3"/>
+                    <MenuItem Header="Удалить" Click="MenuDelete_Click" Icon="{DynamicResource icoDelete}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Width="35" Binding="{Binding idCounterparty}" HeaderStyle="{StaticResource dgshStyle}" CellStyle="{StaticResource dgsStyle}"/>
+                <DataGridTextColumn Header="Название" Width="*" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="ИНН" Width="auto" Binding="{Binding INN}" HeaderStyle="{StaticResource dgshStyle}" CellStyle="{StaticResource dgsStyle}"/>
+                <DataGridTextColumn Header="Адрес" Width="2.25*" Binding="{Binding Address}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button Content="В главное меню" Grid.Row="3" Style="{StaticResource btnStyle}" Click="BtnBack_Click" IsCancel="true"/>
+    </Grid>
+</Page>

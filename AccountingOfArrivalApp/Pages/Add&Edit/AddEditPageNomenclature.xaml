@@ -1,0 +1,66 @@
+﻿<Page x:Class="AccountingOfArrivalApp.Pages.Add_Edit.AddEditPageNomenclature"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      mc:Ignorable="d" 
+      d:DesignHeight="750" d:DesignWidth="1080"
+      Title="AddEditPageNomenclature">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="4.8*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Добавление материала" Name="txtTitle" Style="{StaticResource tblStyle}"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="1" HorizontalAlignment="Center">
+            <StackPanel>
+                <TextBlock Text="Название материала:" Style="{StaticResource tblStyle2}"/>
+                <TextBox Name="txbName" Text="{Binding Name}" Style="{StaticResource txbStyle}"/>
+            </StackPanel>
+            <Separator Opacity="0" Width="25"/>
+            <StackPanel>
+                <TextBlock Text="Тип материала:" Style="{StaticResource tblStyle2}"/>
+                <ComboBox Name="cmbTypes" SelectionChanged="CmbTypes_SelectionChanged" SelectedValue="{Binding IdType}" SelectedValuePath="IdType" DisplayMemberPath="Name" Style="{StaticResource cmbStyle}" Width="300"/>
+            </StackPanel>
+            <Separator Opacity="0" Width="25"/>
+            <StackPanel>
+                <TextBlock Text="Номер чертежа:" Style="{StaticResource tblStyle2}"/>
+                <TextBox Name="txbDrawingNumber" Text="{Binding DrawingNumber}" Style="{StaticResource txbStyle}"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2" VerticalAlignment="Top" Margin="25,-15,0,0">
+            <Button Content="+" Style="{StaticResource btnStyle3}" Click="MenuAdd_Click"/>
+            <Button Content="⭯" Style="{StaticResource btnStyle3}" Click="MenuUpdate_Click"/>
+            <Button Content="-" Style="{StaticResource btnStyle3}" Click="MenuDelete_Click"/>
+        </StackPanel>
+        <TextBlock Text="Состав материала" Grid.Row="2" Style="{StaticResource tblStyle}" VerticalAlignment="Top" FontSize="30"/>
+        <DataGrid Name="dtgHierarchy" IsReadOnly="False" SelectionMode="Single" CanUserAddRows="False" Margin="15,50,15,15">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Добавить" Click="MenuAdd_Click" Icon="{DynamicResource icoAdd}"/>
+                    <MenuItem Header="Обновить" Click="MenuUpdate_Click" Icon="{DynamicResource icoUpdate}"/>
+                    <Separator Margin="0,3"/>
+                    <MenuItem Header="Удалить" Click="MenuDelete_Click" Icon="{DynamicResource icoDelete}"/>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.CellStyle>
+                <Style TargetType="{x:Type DataGridCell}">
+                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="DataGridCell_PreviewMouseLeftButtonDown" />
+                    <EventSetter Event="PreviewTextInput" Handler="DataGridCell_PreviewTextInput" />
+                </Style>
+            </DataGrid.CellStyle>
+            <DataGrid.Columns>
+                <DataGridComboBoxColumn x:Name="cmbParent" Header="Родительский материал" Width="*" SelectedValueBinding="{Binding IdParent}" SelectedValuePath="IdMaterial" DisplayMemberPath="Name"/>
+                <DataGridComboBoxColumn x:Name="cmbChild" Header="Дочерний материал" Width="*" SelectedValueBinding="{Binding IdChild}" SelectedValuePath="IdMaterial" DisplayMemberPath="Name"/>
+                <DataGridTextColumn Header="Количество" Width="175" Binding="{Binding Quantity}" HeaderStyle="{StaticResource dgshStyle}" CellStyle="{StaticResource dgsStyle}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Grid.Row="3">
+            <Button Content="Добавить" Name="btnAddEdit" Style="{StaticResource btnStyle}" Click="BtnAddOrEdit_Click" IsDefault="true"/>
+            <Button Content="Отмена" Style="{StaticResource btnStyle}" Click="BtnCancel_Click" IsCancel="true"/>
+        </StackPanel>
+    </Grid>
+</Page>
