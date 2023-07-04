@@ -249,7 +249,7 @@
   - Метод, возвращаемый список движений по составу поставки.
 
 **Изменил:**
-- В классе `ClassHelper.cs` описал методы для быстрого редактирования ячеек `DataGrid`, которые повторялись на 3-ёх страницах добавления/редактирования (`AddEditPageArrival.xaml.cs`, `AddEditPageNomenclature.xaml.cs` и `AddEditMovementDistribution.xaml.cs`);
+- В классе `ClassHelper.cs` описал методы для быстрого редактирования ячеек `DataGrid`, которые повторялись на 3-ёх страницах добавления/редактирования (`AddEditPageArrival.xaml.cs`, `AddEditPageNomenclature.xaml.cs` и `AddEditMovementDistribution.xaml.cs`).
 
 
 Изменения за 24.05.23
